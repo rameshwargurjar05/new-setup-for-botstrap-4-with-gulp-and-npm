@@ -1,0 +1,6 @@
+.DS_Store
+.sass-cache
+node_modules
+yarn.lock
+package.json
+public/dist
