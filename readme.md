@@ -1,6 +1,6 @@
-# Bootstrap 4 project boilerplate
+# Bootstrap 4 project rameshwar gurjar
 
-A boilerplate for Bootstrap 4, FontAwesome and jQuery using Yarn and Gulp
+A rameshwar gurjar for Bootstrap 4, FontAwesome and jQuery using Yarn and Gulp
 
 
 ## Installation
