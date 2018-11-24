@@ -6,11 +6,8 @@ var gulp = require('gulp'),
 		autoprefixer = require('gulp-autoprefixer'),
 		concat = require('gulp-concat'),
 		uglify = require('gulp-uglify'),
-		imagemin = require('gulp-imagemin')		
-		browserSync = require('browser-sync').create();
-
-
-
+		imagemin = require('gulp-imagemin');
+		
 		
 var config = {
 	stylesPath: 'assets/styles',
@@ -36,11 +33,7 @@ gulp.task('css', function() {
 		.pipe(concat('main.css'))
 		 .pipe(minify())	
 		.pipe(autoprefixer())		
-		.pipe(gulp.dest(config.outputDir + '/css'))
-		.pipe(browserSync.reload({
-		      stream: true
-		   }));
-		
+		.pipe(gulp.dest(config.outputDir + '/css'));
 });
 
 
@@ -59,23 +52,13 @@ gulp.task('js', function() {
 		.pipe(filter('**/*.js'))
 		.pipe(concat('app.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest(config.outputDir + '/js'))
-		.pipe(browserSync.reload({
-		      stream: true
-		   }));
-		
+		.pipe(gulp.dest(config.outputDir + '/js'));
 });
 
-gulp.task('browserSync', function() {
-   browserSync.init({
-      server: {
-         baseDir: 'public/'
-      },
-   })
-})
-
-gulp.task('default', ['browserSync', 'css' , 'icons', 'css', 'js'], function (){
-   gulp.watch([config.stylesPath + '**/*.scss', config.stylesPath + '**/*.sass', config.stylesPath + '**/*.css'], ['css']);
+gulp.task('watch', function(){
+	gulp.watch([config.stylesPath + '**/*.scss', config.stylesPath + '**/*.sass', config.stylesPath + '**/*.css'], ['css']);
 	gulp.watch([config.jsPath + '**/*.js'], ['js']);
 	gulp.watch([config.imagesPath + '/**/*'], ['images']);
-}); 
+});
+
+gulp.task('default', ['icons', 'css', 'js']);

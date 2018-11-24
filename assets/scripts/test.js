@@ -1,5 +1,7 @@
  $("document").ready( function () {
-        alert("Hello, world");
-     
-        
+      console.log('reloaded12');
+
+        $('.carousel').carousel({
+  interval: 200
+})
     }); 
