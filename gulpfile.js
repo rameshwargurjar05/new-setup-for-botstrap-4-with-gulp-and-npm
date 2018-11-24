@@ -33,7 +33,7 @@ gulp.task('images', function() { 
 
 gulp.task('css', function() {
 	return gulp.src([ './node_modules/bootstrap/dist/css/bootstrap.min.css' ,'./node_modules/font-awesome/scss' ,'assets/styles/addons/*.sass' ,'assets/styles/custom.sass' ])	
-		.pipe(concat('main.css'))
+		.pipe(concat('app.css'))
 		 .pipe(minify())	
 		.pipe(autoprefixer())		
 		.pipe(gulp.dest(config.outputDir + '/css'))
