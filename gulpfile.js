@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 		sass = require ('gulp-sass'),
 		notify = require('gulp-notify'),
 		filter = require('gulp-filter'),
+		minifyCSS = require('gulp-minify-css'),
 		autoprefixer = require('gulp-autoprefixer'),
 		concat = require('gulp-concat'),
 		uglify = require('gulp-uglify'),
@@ -27,16 +28,20 @@ gulp.task('images', function() { 
 });
 
 gulp.task('css', function() {
-	return gulp.src(config.stylesPath + '/main.sass')
+	return gulp.src([ './node_modules/bootstrap/dist/css/bootstrap.min.css' ,'./node_modules/font-awesome/scss' ,'assets/styles/addons/*.sass' ,'assets/styles/custom.sass' ])
 		.pipe(sass({
 				outputStyle: 'compressed',
 				includePaths: [
 					config.stylesPath,
 					'./node_modules/bootstrap/scss',
-					'./node_modules/font-awesome/scss'
+					'./node_modules/font-awesome/scss',
+					'assets/styles/addons/*.sass',
+					 'assets/styles/custom.sass'
 				]
 			}).on('error', sass.logError))
-		.pipe(autoprefixer())
+		.pipe(concat('main.css'))
+		.pipe(minifyCSS())		
+		.pipe(autoprefixer())		
 		.pipe(gulp.dest(config.outputDir + '/css'));
 });
 
@@ -52,7 +57,7 @@ gulp.task('bootstrap-js', function(){
 });
 
 gulp.task('js', function() {
-	return gulp.src(['./node_modules/jquery/dist/jquery.min.js', './node_modules/bootstrap/dist/js/bootstrap.min.js', 'assets/scripts/test.js' , 'assets/scripts/main.js'])
+	return gulp.src(['./node_modules/jquery/dist/jquery.min.js', './node_modules/bootstrap/dist/js/bootstrap.min.js', 'assets/scripts/*.js'])
 		.pipe(filter('**/*.js'))
 		.pipe(concat('app.js'))
 		.pipe(uglify())
