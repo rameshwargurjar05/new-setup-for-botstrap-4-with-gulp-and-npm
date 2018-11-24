@@ -1,1 +1,1 @@
-//your JS here
+console.log("Hello, world");
