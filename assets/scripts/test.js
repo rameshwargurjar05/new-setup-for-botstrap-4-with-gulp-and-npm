@@ -2,6 +2,6 @@
       console.log('reloaded12');
 
         $('.carousel').carousel({
-  interval: 200
+  interval: 20
 })
     }); 

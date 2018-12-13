@@ -74,7 +74,7 @@ gulp.task('browserSync', function() {
    })
 })
 
-gulp.task('default', ['browserSync', 'css' , 'icons', 'css', 'js'], function (){
+gulp.task('start', ['browserSync', 'css' , 'icons', 'css', 'js'], function (){
    gulp.watch([config.stylesPath + '**/*.scss', config.stylesPath + '**/*.sass', config.stylesPath + '**/*.css'], ['css']);
 	gulp.watch([config.jsPath + '**/*.js'], ['js']);
 	gulp.watch([config.imagesPath + '/**/*'], ['images']);
